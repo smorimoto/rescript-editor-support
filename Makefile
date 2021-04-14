@@ -1,4 +1,4 @@
-SHELL = /bin/zsh
+SHELL = /bin/bash
 MAKEFLAGS += --jobs 4
 INCLUDES = -I src -I src/vendor/odoc_parser -I src/vendor/omd -I src/vendor/res_outcome_printer -I src/vendor
 
@@ -15,9 +15,9 @@ OCAMLDEP = ocamldep.opt
 
 include .depend
 depend:
-	@$(OCAMLDEP) -native $(INCLUDES) src/**/*.(ml|mli) > .depend
+	@$(OCAMLDEP) -native $(INCLUDES) `find src -name "*.ml" -o -name "*.mli"` > .depend
 
-SOURCE_FILES = $(shell $(OCAMLDEP) -sort src/**/*.ml | sed -E "s/\.ml/.cmx/g")
+SOURCE_FILES = $(shell $(OCAMLDEP) -sort `find src -name "*.ml"` | sed -E "s/\.ml/.cmx/g")
 
 lib/rescript-editor-support.exe: $(SOURCE_FILES)
 	@echo Linking...
