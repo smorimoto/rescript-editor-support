@@ -10,4 +10,5 @@ node_modules
 *.cmti
 *.cmx
 *.o
-lib/
+lib/*
+!lib/README.md
