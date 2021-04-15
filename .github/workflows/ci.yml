@@ -18,7 +18,7 @@ jobs:
           - os: ubuntu-latest
             script_name: eval $(opam env) && make
           - os: windows-latest
-            script_name: "%CYGWIN_ROOT%\\bin\\bash eval $(opam env) && make"
+            script_name: "%CYGWIN_ROOT%\\bin\\bash && eval $(opam env) && make"
 
     runs-on: ${{matrix.os}}
 
