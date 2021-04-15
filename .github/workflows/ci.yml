@@ -15,10 +15,13 @@ jobs:
         include:
           - os: macos-latest
             script_name: eval $(opam env) && make
+            script_name2: ""
           - os: ubuntu-latest
             script_name: eval $(opam env) && make
+            script_name2: ""
           - os: windows-latest
-            script_name: bash && eval $(opam env) && make
+            script_name: bash
+            script_name2: eval $(opam env) && make
 
     runs-on: ${{matrix.os}}
 
@@ -52,3 +55,4 @@ jobs:
     - run: opam pin add rescript-editor-support.dev . --no-action
     - run: opam install . --deps-only --with-doc --with-test
     - run: ${{matrix.script_name}}
+    - run: ${{matrix.script_name2}}
