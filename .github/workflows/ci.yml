@@ -20,7 +20,7 @@ jobs:
             script_name: eval $(opam env) && make
             script_name2: ""
           - os: windows-latest
-            script_name: bash
+            script_name: "%CYGWIN_ROOT%\\bash"
             script_name2: eval $(opam env) && make
 
     runs-on: ${{matrix.os}}
